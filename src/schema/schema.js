@@ -11,9 +11,11 @@ const {
   GraphQLString,
   GraphQLList,
   GraphQLSchema,
+  GraphQLNonNull,
+  GraphQLEnumType,
 } = require("graphql");
 
-//Client Type
+//Project Type
 const ProjectType = new GraphQLObjectType({
   name: "Project",
   fields: () => ({
@@ -101,6 +103,29 @@ const mutation = new GraphQLObjectType({
       },
       resolve(parent, args) {
         return Client.findByIdAndDelete(args.id);
+      },
+    },
+    //Update Client
+    updateClient: {
+      type: ClientType,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLID) },
+        name: { type: GraphQLString },
+        email: { type: GraphQLString },
+        phone: { type: GraphQLString },
+      },
+      resolve(parent, args) {
+        return Client.findByIdAndUpdate(
+          args.id,
+          {
+            $set: {
+              name: args.name,
+              email: args.email,
+              phone: args.phone,
+            },
+          },
+          { new: true } //If the client is not found, create new one
+        );
       },
     },
     //Add Project
