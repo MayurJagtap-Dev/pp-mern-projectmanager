@@ -31,7 +31,7 @@ export default function App() {
     <>
       <ApolloProvider client={client}>
         <Header />
-        <div class="grid bg-white">
+        <div className="flex flex-col bg-gray-100 w-screen">
           <Client />
         </div>
       </ApolloProvider>

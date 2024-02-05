@@ -1,4 +1,3 @@
-import { FaTrash } from "react-icons/fa";
 import { useMutation } from "@apollo/client";
 import { DELETE_CLIENT } from "../mutations/clientMutation";
 import { GET_CLIENTS } from "../queries/ClientQueries";
@@ -19,12 +18,20 @@ export default function ClientRow({ client }) {
 
   return (
     <tr>
-      <td>{client.name}</td>
-      <td>{client.email}</td>
-      <td>{client.phone}</td>
-      <td>
-        <button class="btn btn-sm btn-danger" onClick={deleteClient}>
-          <FaTrash />
+      <td className="py-4 px-6 border-b border-gray-200 truncate">
+        {client.name}
+      </td>
+      <td className="py-4 px-6 border-b border-gray-200 truncate">
+        {client.email}
+      </td>
+      <td className="py-4 px-6 border-b border-gray-200">{client.phone}</td>
+      <td className="py-4 px-6 border-b border-gray-200">
+        <button
+          onClick={deleteClient}
+          type="button"
+          className="mr-3 text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+        >
+          Delete
         </button>
       </td>
     </tr>
