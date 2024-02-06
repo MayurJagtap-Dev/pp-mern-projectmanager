@@ -11,34 +11,36 @@ export default function Client() {
 
   return (
     <>
-      <AddClientModal />
-      {!loading && !error && (
-        <div className="shadow-lg rounded-lg overflow-hidden m-4 md:mx-10">
-          <table className="w-full table-fixed">
-            <thead>
-              <tr className="border bg-white">
-                <th className="w-1/6 py-4 px-6 text-left text-gray-600 font-bold">
-                  Name
-                </th>
-                <th className="w-1/6 py-4 px-6 text-left text-gray-600 font-bold">
-                  Email
-                </th>
-                <th className="w-1/6 py-4 px-6 text-left text-gray-600 font-bold">
-                  Phone
-                </th>
-                <th className="w-1/6 py-4 px-6 text-left text-gray-600 font-bold">
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white">
-              {data.clients.map((client) => (
-                <ClientRow key={client.id} client={client} />
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      <div className="flex flex-col bg-gray-100 w-fit">
+        <AddClientModal />
+        {!loading && !error && (
+          <div className="shadow-lg rounded-lg overflow-hidden m-4 md:mx-10">
+            <table className="w-full table-fixed">
+              <thead>
+                <tr className="border bg-white">
+                  <th className="w-1/6 py-4 px-6 text-left text-gray-600 font-bold">
+                    Name
+                  </th>
+                  <th className="w-1/6 py-4 px-6 text-left text-gray-600 font-bold">
+                    Email
+                  </th>
+                  <th className="w-1/6 py-4 px-6 text-left text-gray-600 font-bold">
+                    Phone
+                  </th>
+                  <th className="w-1/6 py-4 px-6 text-left text-gray-600 font-bold">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white">
+                {data.clients.map((client) => (
+                  <ClientRow key={client.id} client={client} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     </>
   );
 }
