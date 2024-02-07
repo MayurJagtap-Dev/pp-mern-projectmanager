@@ -107,7 +107,6 @@ export default function AddClientModal() {
                         <button
                           className="text-white bg-green-600  px-3 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none"
                           type="submit"
-                          onClick={() => {}}
                         >
                           Submit
                         </button>
